@@ -11,7 +11,8 @@ class EmailAddressParser
     attr_accessor :emails
 
     def parse
-        # use regular expression // to split on all spaces and commas then remove any blank entries
-        emails.split(/[\s,]/).uniq.reject {|email| email.empty?}
+        # delimiters = [" ", ", "]
+        # Regexp.union(delimiters) #=> /,\s|\s/ (regexp to use in split)
+        emails.split(/,\s|\s/).uniq
     end
 end
